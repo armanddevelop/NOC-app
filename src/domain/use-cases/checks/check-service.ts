@@ -3,6 +3,7 @@ interface ICheckService {
 }
 type SuccessCallback = () => void;
 type ErrorCallback = (error: string) => void;
+
 export class CheckService implements ICheckService {
   constructor(
     private readonly successCallback: SuccessCallback,
