@@ -9,10 +9,12 @@ export enum LogSeverityLevel {
 export class LogEntity {
   public level: LogSeverityLevel;
   public message: string;
+  public reason?: string;
   public createdAt: Date;
-  constructor(message: string, level: LogSeverityLevel) {
+  constructor(message: string, level: LogSeverityLevel, reason?: string) {
     this.level = level;
     this.message = message;
+    this.reason = reason || "";
     this.createdAt = new Date();
   }
   static fromJson = (json: string): LogEntity => {
