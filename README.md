@@ -4,7 +4,7 @@
 
 ```
 PORT=3000
-MAILER_EMAIL = asalamanca.ayon@gmail.com
+MAILER_EMAIL = test.mail@gmail.com
 MAILER_SECRET_KEY = 12456
 PROD= false
 ```
