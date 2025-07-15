@@ -3,8 +3,8 @@ import { LogRepository } from "../../repository/log.repository";
 interface ICheckService {
   execute(url: string): Promise<boolean>;
 }
-type SuccessCallback = () => void;
-type ErrorCallback = (error: string) => void;
+type SuccessCallback = (() => void) | undefined;
+type ErrorCallback = ((error: string) => void) | undefined;
 
 export class CheckService implements ICheckService {
   constructor(
@@ -26,7 +26,7 @@ export class CheckService implements ICheckService {
         LogSeverityLevel.low,
         `all good!`
       );
-      this.successCallback();
+      this.successCallback && this.successCallback();
       this.logRepository.saveLog(log);
       return true;
     } catch (error: unknown) {
@@ -38,7 +38,7 @@ export class CheckService implements ICheckService {
           `${errorMsg}`
         );
         this.logRepository.saveLog(log);
-        this.errorCallback(errorMsg);
+        this.errorCallback && this.errorCallback(errorMsg);
       }
       return false;
     }
