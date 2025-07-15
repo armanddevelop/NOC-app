@@ -9,14 +9,15 @@ const fileSystemlogRepository = new LogRepositoryImpl(
 
 export class ServerUp {
   public static startServer(): void {
-    const url = process.env.URL || "https://www.google.com";
-    CronService.createJob("*/50 * * * * *", () => {
-      new CheckService(
-        fileSystemlogRepository,
-        () => console.log("Service is up!", url),
-        (error: string) => console.error(`Error CheckService ${url}:`, error)
-      ).execute(url);
-      //new CheckService().execute("http://localhost:3000");
-    });
+    console.log("Server start ");
+    // const url = process.env.URL || "https://www.google.com";
+    // CronService.createJob("*/50 * * * * *", () => {
+    //   new CheckService(
+    //     fileSystemlogRepository,
+    //     () => console.log("Service is up!", url),
+    //     (error: string) => console.error(`Error CheckService ${url}:`, error)
+    //   ).execute(url);
+    //   //new CheckService().execute("http://localhost:3000");
+    // });
   }
 }

@@ -5,6 +5,9 @@
 ```
 PORT=3000
 MAILER_EMAIL = test.mail@gmail.com
-MAILER_SECRET_KEY = 12456
-PROD= false
+MAILER_SECRET_KEY =
+PROD=
 ```
+
+2.- install node_modules using `npm i`
+3.- execute `npm run dev`

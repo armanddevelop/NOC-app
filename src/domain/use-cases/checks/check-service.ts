@@ -21,22 +21,23 @@ export class CheckService implements ICheckService {
       if (!request.ok) {
         return false;
       }
-      const log = new LogEntity(
-        `Check successful for URL: ${url}`,
-        LogSeverityLevel.low,
-        `all good!`
-      );
+      const log = new LogEntity({
+        level: LogSeverityLevel.low,
+        message: `Check successful for URL: ${url}`,
+        origin: "",
+      });
       this.successCallback && this.successCallback();
       this.logRepository.saveLog(log);
       return true;
     } catch (error: unknown) {
       if (error instanceof Error) {
         const errorMsg = error.message;
-        const log = new LogEntity(
-          `Error URL: ${url}`,
-          LogSeverityLevel.heigh,
-          `${errorMsg}`
-        );
+
+        const log = new LogEntity({
+          level: LogSeverityLevel.heigh,
+          message: `Error URL: ${url}`,
+          origin: "",
+        });
         this.logRepository.saveLog(log);
         this.errorCallback && this.errorCallback(errorMsg);
       }
