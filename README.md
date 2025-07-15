@@ -10,4 +10,5 @@ PROD=
 ```
 
 2.- install node_modules using `npm i`
+
 3.- execute `npm run dev`
